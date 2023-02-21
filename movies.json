@@ -1,0 +1,51 @@
+{
+    "movie1": {
+      "title": "Be With Me",
+      "director": "Eric Khoo"
+    },
+
+    "movie2": {
+      "title": "Shutter",
+      "director": "Banjong Pisanthanakun, Parkpoom Wongpoom"
+    },
+
+    "movie3": {
+      "title": "Inception",
+      "director": "Christopher Nolan"
+    },
+
+    "movie4": {
+      "title": "Mad Max: Fury Road",
+      "director": "George Miller"
+    },
+
+    "movie5": {
+      "title": "Interstellar",
+      "director": "Christopher Nolan"
+    },
+
+    "movie6": {
+      "title": "Schindler's List",
+      "director": "Steven Spielberg"
+    },
+
+    "movie7": {
+      "title": "The Curious Case of Benjamin Button",
+      "director": "David Fincher"
+    },
+
+    "movie8": {
+      "title": "The Shawshank Redemption",
+      "director": "Frank Darabont"
+    },
+
+    "movie9": {
+      "title": "The Fault in Our Stars",
+      "director": "Josh Boone"
+    },
+
+    "movie10": {
+      "title": "Sing 2",
+      "director": "Garth Jennings"
+    }
+  }
