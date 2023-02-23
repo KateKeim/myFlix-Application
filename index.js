@@ -3,6 +3,7 @@ const express = require("express"),
   fs = require("fs"),
   path = require("path"),
   movies = require("./movies.json");
+const { dirname } = require("path");
 
 const app = express();
 const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {
@@ -24,7 +25,7 @@ app.get("/movies", (req, res) => {
   res.json(movies);
 });
 app.get("/", (req, res) => {
-  res.send("This is my first Node Application.");
+  res.sendFile(__dirname + "/documentation.html");
 });
 
 //Listening request post 8080

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MyFlix-App</title>
 </head>
 <body>
     <h1>MyFlix-App</h1>
@@ -16,6 +16,78 @@
     
     <p>Project dependencies: Javascript, Express, Mongoose</p><br>
     
-    <p>Another project will follow which builds the client-side component of this application using REACT.</p>
+
+    <table>
+        <thead>
+          <tr>
+            <th>Features</th>
+            <th>URL</th>
+            <th>Method type</th>
+            <th>Response Data Format</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Return a list of ALL movies to the user</td>
+            <td>/movies</td>
+            <td>GET</td>
+            <td>A JSON object holding data about all the movies</td>
+          </tr>
+          <tr>
+            <td>Return data (description, genre, director, image URL, whether it is featured or not)</td>
+            <td>/movies/:title</td>
+            <td>GET</td>
+            <td>A JSON object holding data about a specific movie containing a description, genre, director, image url, and featured or not</td>
+          </tr>
+          <tr>
+            <td>Return data about a genre (description) by name/title (e.g. Thriller)</td>
+            <td>/movies/genre/:genreName</td>
+            <td>GET</td>
+            <td>A JSON object holding data about genre</td>
+          </tr>
+          <tr>
+            <td>Return data about a director (bio, birth year, death year) by name</td>
+            <td>/movies/director/:directorName</td>
+            <td>GET</td>
+            <td>A JSON object holding data about the director</td>
+          </tr>
+          <tr>
+            <td>Allow new users to register</td>
+            <td>/users</td>
+            <td>POST</td>
+            <td>A JSON object holding data about the user to add, structured like:
+              {
+                id:2,
+                name: "Max"
+                favorite movie: "Shutter"
+              }
+            </td>
+          </tr>
+          <tr>
+            <td>Allow users to update their user info (username, password, email, birthdate)</td>
+            <td>/users/:id</td>
+            <td>PUT</td>
+            <td>A JSON object holding data about the user</td>
+          </tr>
+          <tr>
+            <td>Allow users to add a movie to their list of favorites</td>
+            <td>/users/:id/:movieTitle</td>
+            <td>POST</td>
+            <td>A text message saying movie title has been added to array</td>
+          </tr>
+          <tr>
+            <td>Allow users to remove a movie from their list of favorites</td>
+            <td>/users/:id/:movieTitle</td>
+            <td>DELETE</td>
+            <td>A text message saying movie has been removed</td>
+          </tr>
+          <tr>
+            <td>Allow existing users to deregister</td>
+            <td>/users/:id</td>
+            <td>DELETE</td>
+            <td>A text message saying user has been deleted</td>
+          </tr>
+        </tbody>
+      </table>
 </body>
 </html>
