@@ -19,6 +19,8 @@ let users = [
     },
 ]
 
+
+
 let movies = [
     {
       "Title":"Be With Me",
@@ -29,7 +31,7 @@ let movies = [
       },
       "Director": {
         "Name": "Eric Khoo",
-        "Bio":" Eric Khoo was the youngest son of the 15 children of Tan Sri Khoo Teck Puat[2] from his second wife Rose Marie Wee.[3] His mother, who was a cinephile, introduced him to cinema when he was three years old. He later received his education at the United World College of South East Asia.Khoo's interest in film eventually led him to study cinematography at the City Art Institute in Sydney, Australia.",
+        "Bio":" Eric Khoo was the youngest son of the 15 children of Tan Sri Khoo Teck Puat from his second wife Rose Marie Wee. His mother, who was a cinephile, introduced him to cinema when he was three years old. He later received his education at the United World College of South East Asia.Khoo's interest in film eventually led him to study cinematography at the City Art Institute in Sydney, Australia.",
         "Birth":1965-03-27
       },
       "ImageURL":"https://4.bp.blogspot.com/_oSeTobTLgvo/S7lwp_SNj4I/AAAAAAAAAto/Fz1wSnZJhws/s1600/BeWithMe.jpg",
@@ -59,7 +61,7 @@ let movies = [
         },
         "Director": {
         "Name": "Christopher Nolan",
-        "Bio":"Best known for his cerebral, often nonlinear, storytelling, acclaimed writer-director Christopher Nolan was born on July 30, 1970, in London, England. Over the course of 15 years of filmmaking, Nolan has gone from low-budget independent films to working on some of the biggest blockbusters ever made.",
+        "Bio":"Best known for his cerebral, often nonlinear, storytelling, acclaimed writer-director. Over the course of 15 years of filmmaking, Nolan has gone from low-budget independent films to working on some of the biggest blockbusters ever made.",
         "Birth":1970-07-30
         },
         "ImageURL":"https://www.imdb.com/title/tt1375666/mediaviewer/rm3426651392/?ref_=tt_ov_i",
