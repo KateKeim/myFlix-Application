@@ -21,6 +21,12 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+//import auth.js file
+let auth = require("./auth")(app);
+// require Passport module and import passport.js file
+const passport = require('passport');
+require('./passport');
+
 const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {
   flags: "a",
 });
@@ -88,8 +94,15 @@ app.post('/users/:Username/movies/:MovieID', (req, res) => {
 });
 
 //GET request
-app.get("/movies", (req, res) => {
-  res.json(movies);
+app.get("/movies", passport.authenticate("jwt", {session: false}), (req, res) => {
+  Movies.find()
+    .then((movies) => {
+      res.status(201).json(movies);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).send('Error: ' + error);
+    });
 });
 
 app.get("/", (req, res) => {
