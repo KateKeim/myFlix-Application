@@ -8,7 +8,8 @@ const express = require("express"),
   users = require("./users.json"),
   Movies = models.Movie,
   Users = models.User,
-  bodyParser = require("body-parser");
+  bodyParser = require("body-parser"),
+  {check, validationResult} = require("express-validator");
 
 mongoose.connect("mongodb://127.0.0.1:27017/cfDB?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.7.1", { 
   useNewUrlParser: true, 
@@ -20,6 +21,22 @@ mongoose.set('strictQuery', true);
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+
+//CORS setting 
+const cors = require('cors');
+//app.use(cors()); = to allow requests from all origins
+let allowedOrigins = ['http://localhost:8080', 'http://testsite.com'];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if(!origin) return callback(null, true);
+    if(allowedOrigins.indexOf(origin) === -1){ // If a specific origin isn’t found on the list of allowed origins
+      let message = "The CORS policy for this application doesn\’t allow access from origin " + origin;
+      return callback(new Error(message ), false);
+    }
+    return callback(null, true);
+  }
+}));
 
 //import auth.js file
 let auth = require("./auth")(app);
@@ -51,7 +68,27 @@ app.use((err, req, res, next) => {
   Email: String,
   Birthday: Date
 }*/
-app.post('/users', (req, res) => {
+app.post('/users',
+  // Validation logic here for request
+  //you can either use a chain of methods like .not().isEmpty()
+  //which means "opposite of isEmpty" in plain english "is not empty"
+  //or use .isLength({min: 5}) which means
+  //minimum value of 5 characters are only allowed
+  [
+    check('Username', 'Username is required').isLength({min: 5}),
+    check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
+    check('Password', 'Password is required').not().isEmpty(),
+    check('Email', 'Email does not appear to be valid').isEmail()
+  ], (req, res) => {
+
+  // check the validation object for errors
+    let errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
+
+  let hashedPassword = Users.hashPassword(req.body.Password);
   Users.findOne({ Username: req.body.Username })
     .then((user) => {
       if (user) {
@@ -60,7 +97,7 @@ app.post('/users', (req, res) => {
         Users
           .create({
             Username: req.body.Username,
-            Password: req.body.Password,
+            Password: hashedPassword,
             Email: req.body.Email,
             Birthday: req.body.Birthday
           })
@@ -222,6 +259,7 @@ app.delete('/users/:Username/movies/:MovieID', (req, res) => {
 });
 
 //Listening request post 8080
-app.listen(8080, () => {
-  console.log("Website started on port 8080");
+const port = process.env.PORT || 8080;
+app.listen(port, '0.0.0.0',() => {
+ console.log('Listening on Port ' + port);
 });
