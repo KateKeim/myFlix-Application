@@ -10,8 +10,8 @@ const express = require("express"),
   Users = models.User,
   bodyParser = require("body-parser"),
   {check, validationResult} = require("express-validator");
-
-mongoose.connect("mongodb://127.0.0.1:27017/cfDB?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.7.1", { 
+//mongodb://127.0.0.1:27017/cfDB?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.7.1   
+mongoose.connect("mongodb+srv://chakkapatsaran:Nanase1113@myflixck.cfrfcfk.mongodb.net/?retryWrites=true&w=majority",  { 
   useNewUrlParser: true, 
   useUnifiedTopology: true}).then(()=>{
   console.log('Db connected successfully')
@@ -257,7 +257,7 @@ app.delete('/users/:Username/movies/:MovieID', (req, res) => {
     }
   });
 });
-
+//mongoimport --uri mongodb+srv://chakkapatsaran:Nanase1113@myflixck.cfrfcfk.mongodb.net/myFlixDB --collection movies --jsonArray --type  --file "C:\Users\benja\Desktop\CareerFoundry\Full-Stack Immersion\Achievement2\my-flix-v2\myFlix-Application\exported_collections\movies.json"
 //Listening request post 8080
 const port = process.env.PORT || 8080;
 app.listen(port, '0.0.0.0',() => {
