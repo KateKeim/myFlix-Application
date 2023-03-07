@@ -4,7 +4,7 @@ const express = require("express"),
   path = require("path"),
   mongoose = require("mongoose"),
   models = require("./models"),
-  movies = require("./movies.json"),
+  movies = require("./exported_collections/movies.json"),
   users = require("./users.json"),
   Movies = models.Movie,
   Users = models.User,
@@ -257,7 +257,7 @@ app.delete('/users/:Username/movies/:MovieID', (req, res) => {
     }
   });
 });
-//mongoimport --uri mongodb+srv://chakkapatsaran:Nanase1113@myflixck.cfrfcfk.mongodb.net/myFlixDB --collection movies --jsonArray --type  --file "C:\Users\benja\Desktop\CareerFoundry\Full-Stack Immersion\Achievement2\my-flix-v2\myFlix-Application\exported_collections\movies.json"
+//mongoimport --uri mongodb+srv://chakkapatsaran:Nanase1113@myflixck.cfrfcfk.mongodb.net/myFlixDB --collection users --jsonArray --file "C:\Users\benja\Desktop\CareerFoundry\Full-Stack Immersion\Achievement2\my-flix-v2\myFlix-Application\exported_collections\users.json"
 //Listening request post 8080
 const port = process.env.PORT || 8080;
 app.listen(port, '0.0.0.0',() => {
