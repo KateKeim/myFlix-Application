@@ -6,24 +6,19 @@ const express = require("express"),
   models = require("./models"),
   movies = require("./exported_collections/movies.json"),
   users = require("./exported_collections/users.json"),
+  Movies = models.Movie,
+  Users = models.User,
   bodyParser = require("body-parser"),
   {check, validationResult} = require("express-validator");
-
-  const Movies = models.Movie;
-  const Users = models.User;
-
 //mongodb://127.0.0.1:27017/cfDB?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.7.1   
 mongoose.connect("mongodb+srv://chakkapatsaran:Nanase1113@myflixck.cfrfcfk.mongodb.net/?retryWrites=true&w=majority",  { 
   useNewUrlParser: true, 
   useUnifiedTopology: true}).then(()=>{
   console.log('Db connected successfully')
 });
-mongoose.set('strictQuery', false);
+mongoose.set('strictQuery', true);
 
-//Initialize express
 const app = express();
-
-//Body parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -31,6 +26,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 const cors = require('cors');
 //app.use(cors()); = to allow requests from all origins
 let allowedOrigins = ['http://localhost:8080', 'http://testsite.com'];
+
 app.use(cors({
   origin: (origin, callback) => {
     if(!origin) return callback(null, true);
@@ -54,8 +50,6 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {
 
 //setiing Morgan
 app.use(morgan("combined", { stream: accessLogStream }));
-
-//Serve static files
 app.use(express.static("public"));
 
 //Morgan middleware error handling function
