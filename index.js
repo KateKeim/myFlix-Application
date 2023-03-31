@@ -137,7 +137,7 @@ app.post('/users/:Username/movies/:MovieID', (req, res) => {
 });
 
 //GET request
-app.get("/movies", passport.authenticate("jwt", {session: false}), (req, res) => {
+app.get("/movies", (req, res) => {
   Movies.find()
     .then((movies) => {
       res.status(201).json(movies);
