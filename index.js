@@ -9,11 +9,11 @@ const express = require("express"),
   bodyParser = require("body-parser"),
   {check, validationResult} = require("express-validator");
 
-  const Movies = models.Movie;
+  const Movies = models.Movies;
   const Users = models.User;
 
 //mongodb://127.0.0.1:27017/cfDB?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.7.1   
-mongoose.connect("mongodb+srv://chakkapatsaran:Nanase1113@myflixck.cfrfcfk.mongodb.net/?retryWrites=true&w=majority",  { 
+mongoose.connect("mongodb+srv://chakkapatsaran:Nanase1113@myflixck.cfrfcfk.mongodb.net/myFlixDB?retryWrites=true&w=majority",  { 
   useNewUrlParser: true, 
   useUnifiedTopology: true}).then(()=>{
   console.log('Db connected successfully')
@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 //CORS setting 
 const cors = require('cors');
 //app.use(cors()); = to allow requests from all origins
-let allowedOrigins = [' http://172.16.1.157:8002/', 'http://testsite.com'];
+let allowedOrigins = ['https://localhost:3000', 'http://testsite.com'];
 app.use(cors({
   origin: (origin, callback) => {
     if(!origin) return callback(null, true);
@@ -138,9 +138,11 @@ app.post('/users/:Username/movies/:MovieID', (req, res) => {
 
 //GET request
 app.get("/movies", (req, res) => {
+  console.log("movi get")
   Movies.find()
-    .then((movies) => {
-      res.status(201).json(movies);
+    .then((movie) => {
+      console.log(movie)
+      res.status(201).json(movie);
     })
     .catch((error) => {
       console.error(error);
