@@ -4,8 +4,8 @@ const express = require("express"),
   path = require("path"),
   mongoose = require("mongoose"),
   models = require("./models"),
-  movies = require("./exported_collections/movies.json"),
-  users = require("./exported_collections/users.json"),
+  // movies = require("./exported_collections/movies.json"),
+  // users = require("./exported_collections/users.json"),
   bodyParser = require("body-parser"),
   {check, validationResult} = require("express-validator");
 
@@ -22,17 +22,18 @@ mongoose.set('strictQuery', false);
 
 //Initialize express
 const app = express();
+const cors = require('cors');
 
 //Body parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 //CORS setting 
-const cors = require('cors');
-//let allowedOrigins = ['http://localhost:8080', 'http://testsite.com', 'http://localhost:1234', 'https://myflixck.netlify.app'];
+//const cors = require('cors');
+let allowedOrigins = ['http://localhost:8080', 'http://testsite.com', 'http://localhost:1234', 'https://myflixck.netlify.app'];
 
- app.use(cors(
-  //{
+app.use(cors());
+//   {
 //   origin: (origin, callback) => {
 //     if (!origin) return callback(null, true);
 //     if (allowedOrigins.indexOf(origin) === -1) {
@@ -42,7 +43,9 @@ const cors = require('cors');
 //     return callback(null, true);
 //   }
 // }
-));
+// ));
+
+
 
 //import auth.js file
 let auth = require("./auth")(app);
@@ -88,7 +91,7 @@ app.post('/users',
     check('Password', 'Password is required').not().isEmpty(),
     check('Email', 'Email does not appear to be valid').isEmail()
   ], (req, res) => {
-
+ console.log(req.body)
   // check the validation object for errors
     let errors = validationResult(req);
 
