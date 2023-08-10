@@ -136,3 +136,5 @@ Timestamp: Thu Feb 16 2023 09:57:03 GMT+0100 (Central European Standard Time)
 127.0.0.1 - - [08/Aug/2023:13:37:27 +0000] "POST /movies HTTP/1.1" 404 146 "-" "PostmanRuntime/7.32.3"
 127.0.0.1 - - [09/Aug/2023:09:00:39 +0000] "GET / HTTP/1.1" 200 18 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
 127.0.0.1 - - [09/Aug/2023:09:00:39 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:8080/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
+127.0.0.1 - - [10/Aug/2023:08:20:52 +0000] "GET / HTTP/1.1" 200 18 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.200"
+127.0.0.1 - - [10/Aug/2023:08:20:52 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:8080/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.200"

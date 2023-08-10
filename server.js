@@ -2,9 +2,12 @@ const express = require("express"),
     app = express(),
     bodyParser = require("body-parser"),
     uuid = require("uuid");
+
 const bcrypt = require("bcrypt")
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+
 
 let users = [
     {
